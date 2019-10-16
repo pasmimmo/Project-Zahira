@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-settings_path=Path.joinpath(Path.home(),'.SlideScripty','SlideSettings.json')
+settings_path=Path.joinpath(Path.home(),'.config/SlideScripty','SlideSettings.json')
 print(settings_path)
 
 def read_settings():
@@ -11,9 +11,10 @@ def write_settings():
     settings={
         'img_path':input('inserisci la path delle immagini: ')
     }
-    f=open(Path.joinpath(Path.home(),'.SlideScripty','SlideSettings.json'),'w')
+    f=open(settings_path,'w')
     f.writelines(json.dumps(settings))
     f.close()
+    print('settings salvati correttamente')
 try:
     print(f'le attuali impostazioni sono {read_settings()}')
 except FileNotFoundError:
